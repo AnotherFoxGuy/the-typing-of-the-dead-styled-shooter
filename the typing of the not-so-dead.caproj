@@ -8,9 +8,10 @@
     <author-website>http://</author-website>
     <app-id>com.mycompany.myapp</app-id>
     <unique-id>2o5gehes48gnz</unique-id>
-    <saved-with-version>17800</saved-with-version>
+    <saved-with-version>18400</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
@@ -52,7 +53,7 @@
         <prop name="Sampling">Linear</prop>
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
-    <object-folder expanded="1">
+    <object-folder>
         <object-type name="TiledBackground" sid="2163147077535822">
             <plugin id="TiledBg" />
             <texture original-source="D:\Users\sietze\Downloads\bg.png" />
@@ -67,7 +68,7 @@
                     <behavior id="EightDir" />
                 </behavior-type>
             </behaviors>
-            <animation-folder expanded="1">
+            <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7084907303582828" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.504854" original-source="D:\Users\sietze\Downloads\dump\player.png">
                         <image-point name="Imagepoint 1" x="1.05556" y="0.524272" />
@@ -95,7 +96,7 @@
                     <behavior id="destroy" />
                 </behavior-type>
             </behaviors>
-            <animation-folder expanded="1">
+            <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7402271463312906" speed="5">
                     <frame duration="1" hotspotX="0.52" hotspotY="0.5" original-source="D:\Users\sietze\Downloads\dump\bullet.png">
                         <collision-poly>
@@ -119,7 +120,7 @@
                     <behavior id="Fade" />
                 </behavior-type>
             </behaviors>
-            <animation-folder expanded="1">
+            <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3027140211989035" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.504951" original-source="D:\Users\sietze\Downloads\dump\explode.png" />
                 </animation>
@@ -147,7 +148,7 @@
                 <type>monster</type>
                 <type>Text3</type>
             </container>
-            <animation-folder expanded="1">
+            <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5891291521133201" speed="5">
                     <frame duration="1" hotspotX="0.503448" hotspotY="0.5" original-source="D:\Users\sietze\Downloads\dump\monster.png">
                         <image-point name="Text" x="0.503448" y="0.5" />
@@ -196,12 +197,15 @@
         <object-type name="Function" sid="8921718243929824">
             <plugin id="Function" />
         </object-type>
+        <object-type name="Browser" sid="5457181984748219">
+            <plugin id="Browser" />
+        </object-type>
     </object-folder>
     <families />
-    <layout-folder expanded="1">
+    <layout-folder>
         <layout>Layout 1.xml</layout>
     </layout-folder>
-    <event-folder expanded="1">
+    <event-folder>
         <event-sheet>Event sheet 1.xml</event-sheet>
     </event-folder>
     <global-instances>
@@ -209,11 +213,12 @@
         <global-instance type="Keyboard" uid="15" />
         <global-instance type="AJAX" uid="8" />
         <global-instance type="Function" uid="7" />
+        <global-instance type="Browser" uid="9" />
     </global-instances>
-    <sounds-folder expanded="1" />
-    <music-folder expanded="1" />
-    <files-folder expanded="1">
-        <file-folder expanded="1" name="Icons">
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
             <file name="icon-16.png" />
             <file name="icon-32.png" />
             <file name="icon-114.png" />
