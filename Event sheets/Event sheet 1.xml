@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="KeyCar" sid="1157316129630049" static="0" type="number">0</variable>
+        <variable constant="0" name="AmountCar" sid="199232710590846" static="0" type="number">0</variable>
+        <variable constant="0" name="CurCar" sid="4524328306754323" static="0" type="number">0</variable>
+        <variable constant="0" name="MadeString" sid="6441547789397011" static="0" type="text"></variable>
+        <variable constant="0" name="ID" sid="5686478889718873" static="0" type="number">0</variable>
+        <variable constant="0" name="NameID" sid="3753216371265104" static="0" type="number">0</variable>
+        <variable constant="0" name="health" sid="510384850168673" static="0" type="number">100</variable>
+        <variable constant="0" name="score" sid="4257192735270439" static="0" type="number">1</variable>
+        <event-block sid="7198565976706032">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="5290396158157931" type="System" />
+            </conditions>
+            <actions>
+                <action id="1" name="Request project file" sid="3914564304502167" type="AJAX">
+                    <param id="0" name="Tag">&quot;Word_dictionary.xml&quot;</param>
+                    <param id="1" name="File">Word_dictionary.xml</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5969049390472779">
+            <conditions>
+                <condition id="-7" name="Compare time" sid="2697941557756848" type="System">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Time (seconds)">0.5</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Alert" sid="382591121966063" type="Browser">
+                    <param id="0" name="Message">&quot;Type the words that appear on the monster to shoot.&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3119563406605964">
+            <conditions>
+                <condition id="0" name="On completed" sid="6529649378030544" type="AJAX">
+                    <param id="0" name="Tag">&quot;Word_dictionary.xml&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Load" sid="1475950139588751" type="XML">
+                    <param id="0" name="XML">AJAX.LastData</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="8067400120512725">
+                    <conditions>
+                        <condition id="0" name="For each node" sid="9681314784602304" type="XML">
+                            <param id="0" name="XPath">&quot;/dictionary/Word&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Add key" sid="3481219734702233" type="Dictionary">
+                            <param id="0" name="Key">&quot;NameID&quot;&amp;NameID</param>
+                            <param id="1" name="Value">XML.StringValue(&quot;text()&quot;)</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="9890247338847953" type="System">
+                            <param id="0" name="Variable">NameID</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="821081342675797">
+            <conditions>
+                <condition id="1" name="On any key pressed" sid="7629434898908551" type="Keyboard" />
+                <condition id="-7" name="Compare instance variable" sid="9458881843813283" type="monster">
+                    <param id="0" name="Instance variable">zero</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">find(monster.Text, Keyboard.StringFromKeyCode(Keyboard.LastKeyCode))</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="47267588264023" type="System">
+                    <param id="0" name="Variable">MadeString</param>
+                    <param id="1" name="Value">&quot;&quot;</param>
+                </action>
+                <action id="-9" name="Set value" sid="5042178495380896" type="System">
+                    <param id="0" name="Variable">ID</param>
+                    <param id="1" name="Value">monster.UID</param>
+                </action>
+                <action id="0" name="Call function" sid="3548425153492715" type="Function">
+                    <param id="0" name="Name">&quot;MakeString&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="4588227196563483" type="player">
+                    <param id="0" name="X">monster.X</param>
+                    <param id="1" name="Y">monster.Y</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="6650454213270228" type="player">
+                    <param id="0" name="Object">bullet</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">1</param>
+                </action>
+                <action id="-10" name="Set value" sid="6532215064441738" type="monster">
+                    <param id="0" name="Instance variable">Text</param>
+                    <param id="1" name="Value">MadeString</param>
+                </action>
+                <action id="-11" name="Add to" sid="9701194994112267" type="monster">
+                    <param id="0" name="Instance variable">KeyCar</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-10" name="Set value" sid="3391691650029581" type="monster">
+                    <param id="0" name="Instance variable">CurCar</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2624873562613606">
+            <conditions>
+                <condition id="0" name="On function" sid="5911356080869622" type="Function">
+                    <param id="0" name="Name">&quot;MakeString&quot;</param>
+                </condition>
+                <condition id="-33" name="Pick by comparison" sid="801267616367238" type="System">
+                    <param id="0" name="Object">monster</param>
+                    <param id="1" name="Expression">monster.UID</param>
+                    <param id="2" name="Comparison">0</param>
+                    <param id="3" name="Value">ID</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block any="1" sid="2576766293053375">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="6617547662636696" type="System">
+                            <param id="0" name="First value">monster.CurCar</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Second value">monster.KeyCar</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" sid="8698142534476917" type="monster">
+                            <param id="0" name="Instance variable">CurCar</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Call function" sid="3645894912896821" type="Function">
+                            <param id="0" name="Name">&quot;MakeString&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4443907588048279">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="5000102393344841" type="System">
+                            <param id="0" name="First value">monster.CurCar</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">monster.AmountCar</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="1894346100373293" type="System">
+                            <param id="0" name="First value">monster.CurCar</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Second value">monster.KeyCar</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" sid="8488118494444072" type="monster">
+                            <param id="0" name="Instance variable">CurCar</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="7706784607211849" type="System">
+                            <param id="0" name="Variable">MadeString</param>
+                            <param id="1" name="Value">tokenat(monster.TextORG, monster.CurCar, &quot;|&quot;)</param>
+                        </action>
+                        <action id="0" name="Call function" sid="804461792162799" type="Function">
+                            <param id="0" name="Name">&quot;MakeString&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="3135596920828933">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="6420640166271262" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="8693166246863242" type="Text2">
+                    <param id="0" name="Text">&quot;Score: &quot; &amp; Score</param>
+                </action>
+                <action id="0" name="Set text" sid="3237579041995551" type="Text3">
+                    <param id="0" name="Text">monster.Text</param>
+                </action>
+                <action id="-3" name="Set position" sid="9976046762530061" type="Text3">
+                    <param id="0" name="X">monster.X</param>
+                    <param id="1" name="Y">monster.Y</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="9815115589706695" type="monster">
+                    <param id="0" name="X">player.X</param>
+                    <param id="1" name="Y">player.Y</param>
+                </action>
+                <action id="-24" name="Move to top" sid="8729721616907445" type="Text3" />
+            </actions>
+        </event-block>
+        <event-block sid="2556700497540577">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="9533278967120043" type="bullet">
+                    <param id="0" name="Object">monster</param>
+                </condition>
+                <condition id="-7" name="Compare instance variable" sid="3881403273304503" type="monster">
+                    <param id="0" name="Instance variable">Text</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">&quot;&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="3944835848280338" type="monster" />
+                <action id="0" name="Spawn another object" sid="1466667660315126" type="monster">
+                    <param id="0" name="Object">explode</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-10" name="Add to" sid="4614198298511142" type="System">
+                    <param id="0" name="Variable">score</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-3" name="Create object" sid="8452119252476651" type="System">
+                    <param id="0" name="Object to create">monster</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X"> 1400</param>
+                    <param id="3" name="Y">random(1024)</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="420446745068314">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1460469232143067" type="System">
+                            <param id="0" name="Variable">score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="-3" name="Create object" sid="4358402806288216" type="System">
+                            <param id="0" name="Object to create">monster</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X"> 1400</param>
+                            <param id="3" name="Y">random(1024)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2185564210976282">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5668409038464262" type="System">
+                            <param id="0" name="Variable">score</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">10</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="-3" name="Create object" sid="256313022358496" type="System">
+                            <param id="0" name="Object to create">monster</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X"> 1400</param>
+                            <param id="3" name="Y">random(1024)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="2026814230493593">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="2110712021446061" type="bullet">
+                    <param id="0" name="Object">monster</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="3469487229887019" type="bullet" />
+            </actions>
+        </event-block>
+        <event-block sid="1696405964559375">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="9871624378008663" type="monster">
+                    <param id="0" name="Object">player</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="6552360386861515" type="monster" />
+                <action id="-9" name="Destroy" sid="765377055532045" type="player" />
+            </actions>
+        </event-block>
+        <event-block sid="120940443887689">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="5472801795162643" type="System">
+                    <param id="0" name="Variable">health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action disabled="1" id="-9" name="Destroy" sid="7852491911308474" type="player" />
+            </actions>
+        </event-block>
+        <event-block sid="9509487558616088">
+            <conditions>
+                <condition id="-18" name="On created" sid="1466666335233233" type="monster" />
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="5475038734946495" type="monster">
+                    <param id="0" name="Instance variable">TextORG</param>
+                    <param id="1" name="Value">Dictionary.Get(&quot;NameID&quot;&amp;floor(random(NameID)))</param>
+                </action>
+                <action id="-10" name="Set value" sid="2016585015427901" type="monster">
+                    <param id="0" name="Instance variable">Text</param>
+                    <param id="1" name="Value">replace(monster.TextORG, &quot;|&quot;, &quot;&quot;)</param>
+                </action>
+                <action id="-10" name="Set value" sid="2504052300657587" type="monster">
+                    <param id="0" name="Instance variable">AmountCar</param>
+                    <param id="1" name="Value">len(monster.Text)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2444439598430308">
+            <conditions>
+                <condition id="-19" name="On destroyed" sid="6371868725834043" type="bullet" />
+                <condition id="-7" name="Compare instance variable" sid="1767534810809932" type="monster">
+                    <param id="0" name="Instance variable">Text</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">&quot;&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="4931419701997879">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="1985811663311497" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">monster</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="8147113065874208" type="monster" />
+                <action id="-3" name="Create object" sid="500007281488065" type="System">
+                    <param id="0" name="Object to create">monster</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X"> 1400</param>
+                    <param id="3" name="Y">random(1024)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="991108260867916">
+            <conditions>
+                <condition id="-18" name="On created" sid="292252619031153" type="monster" />
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="2459574414252056">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="5155134984590248" type="monster">
+                    <param id="0" name="Instance variable">Text</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">&quot;0&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="1925804091117297" type="monster" />
+                <action id="-3" name="Create object" sid="8491028151413248" type="System">
+                    <param id="0" name="Object to create">monster</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X"> 1400</param>
+                    <param id="3" name="Y">random(1024)</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
