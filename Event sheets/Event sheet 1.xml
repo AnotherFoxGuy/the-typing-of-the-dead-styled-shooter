@@ -20,16 +20,9 @@
                     <param id="0" name="Tag">&quot;Word_dictionary.xml&quot;</param>
                     <param id="1" name="File">Word_dictionary.xml</param>
                 </action>
-            </actions>
-        </event-block>
-        <event-block sid="5969049390472779">
-            <conditions>
-                <condition id="-7" name="Compare time" sid="2697941557756848" type="System">
-                    <param id="0" name="Comparison">0</param>
-                    <param id="1" name="Time (seconds)">0.5</param>
-                </condition>
-            </conditions>
-            <actions>
+                <action id="-16" name="Wait" sid="3933597105833248" type="System">
+                    <param id="0" name="Seconds">0.1</param>
+                </action>
                 <action id="0" name="Alert" sid="382591121966063" type="Browser">
                     <param id="0" name="Message">&quot;Type the words that appear on the monster to shoot.&quot;</param>
                 </action>
@@ -179,13 +172,13 @@
                 <condition id="-1" name="Every tick" sid="6420640166271262" type="System" />
             </conditions>
             <actions>
-                <action id="0" name="Set text" sid="8693166246863242" type="Text2">
+                <action id="0" name="Set text" sid="8693166246863242" type="Score">
                     <param id="0" name="Text">&quot;Score: &quot; &amp; Score</param>
                 </action>
-                <action id="0" name="Set text" sid="3237579041995551" type="Text3">
+                <action id="0" name="Set text" sid="3237579041995551" type="MonsterText">
                     <param id="0" name="Text">monster.Text</param>
                 </action>
-                <action id="-3" name="Set position" sid="9976046762530061" type="Text3">
+                <action id="-3" name="Set position" sid="9976046762530061" type="MonsterText">
                     <param id="0" name="X">monster.X</param>
                     <param id="1" name="Y">monster.Y</param>
                 </action>
@@ -193,7 +186,12 @@
                     <param id="0" name="X">player.X</param>
                     <param id="1" name="Y">player.Y</param>
                 </action>
-                <action id="-24" name="Move to top" sid="8729721616907445" type="Text3" />
+                <action id="-24" name="Move to top" sid="8729721616907445" type="MonsterText" />
+                <action id="-3" name="Set position" sid="2274369230203855" type="Arrow">
+                    <param id="0" name="X">MonsterText.X-5</param>
+                    <param id="1" name="Y">MonsterText.Y-90</param>
+                </action>
+                <action id="-24" name="Move to top" sid="2552338613672279" type="Arrow" />
             </actions>
         </event-block>
         <event-block sid="2556700497540577">

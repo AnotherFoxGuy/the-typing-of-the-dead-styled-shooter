@@ -8,7 +8,7 @@
     <author-website>http://</author-website>
     <app-id>com.mycompany.myapp</app-id>
     <unique-id>2o5gehes48gnz</unique-id>
-    <saved-with-version>18400</saved-with-version>
+    <saved-with-version>19000</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
@@ -146,7 +146,8 @@
             </behaviors>
             <container>
                 <type>monster</type>
-                <type>Text3</type>
+                <type>MonsterText</type>
+                <type>Arrow</type>
             </container>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5891291521133201" speed="5">
@@ -175,14 +176,15 @@
         <object-type name="Text" sid="7722684998831957">
             <plugin id="Text" />
         </object-type>
-        <object-type name="Text2" sid="398297936785025">
+        <object-type name="Score" sid="398297936785025">
             <plugin id="Text" />
         </object-type>
-        <object-type name="Text3" sid="4618454109991824">
+        <object-type name="MonsterText" sid="4618454109991824">
             <plugin id="Text" />
             <container>
                 <type>monster</type>
-                <type>Text3</type>
+                <type>MonsterText</type>
+                <type>Arrow</type>
             </container>
         </object-type>
         <object-type global="1" name="XML" sid="4032603597525289">
@@ -199,6 +201,14 @@
         </object-type>
         <object-type name="Browser" sid="5457181984748219">
             <plugin id="Browser" />
+        </object-type>
+        <object-type name="Arrow" sid="8628764953858809">
+            <plugin id="Text" />
+            <container>
+                <type>monster</type>
+                <type>MonsterText</type>
+                <type>Arrow</type>
+            </container>
         </object-type>
     </object-folder>
     <families />
