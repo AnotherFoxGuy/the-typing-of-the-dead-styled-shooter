@@ -1,2 +1,5 @@
+[Bb]in/
+
 *.autosave
 *.backup1
+*.uistate.xml
